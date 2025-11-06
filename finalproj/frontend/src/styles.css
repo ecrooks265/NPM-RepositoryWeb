@@ -1,0 +1,10 @@
+* { box-sizing: border-box; }
+body, html, #root { height: 100%; margin: 0; font-family: system-ui, sans-serif; }
+.app { display: flex; flex-direction: column; height: 100vh; }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #0f172a; color: #fff; }
+.controls input { padding: 8px; width: 360px; margin-right: 8px; }
+.controls button { padding: 8px 12px; }
+.main { display: flex; flex: 1; }
+.graph { flex: 1; background: #f8fafc; }
+.panel { width: 320px; border-left: 1px solid #e6e6e6; padding: 12px; background: #fff; }
+.footer { padding: 8px 12px; font-size: 12px; color: #666; background: #fff; border-top: 1px solid #eee; }
