@@ -1,0 +1,34 @@
+{
+  "name": "legacy-monolith",
+  "dependencies": {
+    "request": {
+      "version": "2.88.2",
+      "dependencies": {
+        "tough-cookie": { "version": "2.5.0", "dependencies": {} },
+        "har-validator": { "version": "5.1.5", "dependencies": {} },
+        "form-data": { "version": "2.3.3", "dependencies": {} }
+      }
+    },
+    "grunt": {
+      "version": "1.3.0",
+      "dependencies": {
+        "glob": { "version": "7.1.6", "dependencies": {} },
+        "rimraf": { "version": "3.0.2", "dependencies": {} }
+      }
+    },
+    "jquery": {
+      "version": "3.5.1",
+      "dependencies": {}
+    },
+    "underscore": {
+      "version": "1.9.1",
+      "dependencies": {}
+    },
+    "event-stream": {
+      "version": "3.3.6",
+      "dependencies": {
+        "flatmap-stream": { "version": "0.1.1", "dependencies": {} }
+      }
+    }
+  }
+}

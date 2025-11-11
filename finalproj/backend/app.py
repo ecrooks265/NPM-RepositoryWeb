@@ -1,9 +1,12 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
-from deps_fetcher import build_graph
+from deps_fetcher import parse_dependency_json
+from npm_client import get_package_metadata
+from osv_client import get_vulnerabilities
+import json
 import asyncio
 
-app = FastAPI(title="NPM Dependency Web API")
+app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -12,23 +15,33 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-CACHE = {}
-CACHE_LOCK = asyncio.Lock()
+@app.post("/api/upload")
+async def upload_json(file: UploadFile = File(...)):
+    """Accepts a dependency JSON file and returns enriched graph data."""
+    content = await file.read()
+    obj = json.loads(content)
+    graph = parse_dependency_json(obj)
 
-@app.get("/api/dependencies/{package_name}")
-async def get_dependencies(package_name: str, depth: int = 2):
-    key = f"{package_name}@{depth}"
-    async with CACHE_LOCK:
-        if key in CACHE:
-            return CACHE[key]
-    try:
-        graph = await build_graph(package_name, max_depth=depth)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-    async with CACHE_LOCK:
-        CACHE[key] = graph
+    # Enrich nodes concurrently
+    tasks = []
+    for node in graph["nodes"]:
+        name = node["data"]["id"]
+        tasks.append(enrich_node(node, name))
+    await asyncio.gather(*tasks)
     return graph
 
-@app.get("/api/ping")
-async def ping():
-    return {"status": "ok"}
+
+@app.get("/api/dependencies/{package}")
+async def get_package_graph(package: str):
+    """Fetch one npm package and enrich metadata."""
+    meta = await get_package_metadata(package)
+    vulns = await get_vulnerabilities(package, meta.get("version"))
+    node = {"data": {"id": package, **meta, **vulns}}
+    return {"nodes": [node], "edges": []}
+
+
+async def enrich_node(node, name):
+    meta = await get_package_metadata(name)
+    vulns = await get_vulnerabilities(name, meta.get("version"))
+    node["data"].update(meta)
+    node["data"].update(vulns)

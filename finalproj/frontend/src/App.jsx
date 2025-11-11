@@ -1,49 +1,38 @@
-import React, { useState } from 'react'
-import GraphView from './components/GraphView'
-import NodePanel from './components/NodePanel'
+import React, { useState } from 'react';
+import GraphView from './components/GraphView';
+import DependencyInput from './components/DependencyInput';
 
 export default function App() {
-  const [graph, setGraph] = useState(null)
-  const [selectedNode, setSelectedNode] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [pkgName, setPkgName] = useState('');
+  const [graphData, setGraphData] = useState(null);
 
-  async function fetchGraph(pkgName, depth=2) {
-    setLoading(true)
-    try {
-      const res = await fetch(`http://localhost:8000/api/dependencies/${encodeURIComponent(pkgName)}?depth=${depth}`)
-      if (!res.ok) throw new Error(await res.text())
-      const data = await res.json()
-      setGraph(data)
-    } catch (e) {
-      alert('Error fetching graph: ' + e.message)
-    } finally {
-      setLoading(false)
-    }
+  async function fetchPackage() {
+    const res = await fetch(`/api/dependencies/${pkgName}`);
+    const data = await res.json();
+    setGraphData(data);
   }
 
   return (
-    <div className="app">
-      <header className="topbar">
-        <h1>NPM Dependency Web</h1>
-        <div className="controls">
-          <input id="pkg-input" placeholder="Enter an npm package (e.g. express)" />
-          <button onClick={() => {
-            const v = document.getElementById('pkg-input').value.trim()
-            if (v) fetchGraph(v, 2)
-          }} disabled={loading}>Fetch</button>
-        </div>
-      </header>
+    <main style={{ padding: '1rem' }}>
+      <h1>Dependency Intelligence Web</h1>
 
-      <main className="main">
-        <section className="graph">
-          <GraphView graph={graph} onNodeSelect={setSelectedNode} />
-        </section>
-        <aside className="panel">
-          <NodePanel node={selectedNode} />
-        </aside>
-      </main>
+      <DependencyInput onGraph={setGraphData} />
 
-      <footer className="footer">Local demo • npm registry</footer>
-    </div>
-  )
+      <div style={{ margin: '1rem 0' }}>
+        <input
+          placeholder="Search npm package (e.g. express)"
+          value={pkgName}
+          onChange={e => setPkgName(e.target.value)}
+        />
+        <button onClick={fetchPackage}>Fetch</button>
+      </div>
+
+      {graphData ? (
+        <GraphView graphData={graphData} />
+      ) : (
+        <p>Upload JSON or search a package to visualize.</p>
+      )}
+    </main>
+  );
 }
+  

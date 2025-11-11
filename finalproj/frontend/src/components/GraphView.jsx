@@ -1,46 +1,88 @@
-import React, { useEffect, useRef } from 'react'
-import cytoscape from 'cytoscape'
-import coseBilkent from 'cytoscape-cose-bilkent'
+import React, { useEffect, useRef, useState } from 'react';
+import cytoscape from 'cytoscape';
+import coseBilkent from 'cytoscape-cose-bilkent';
+import SidePanel from './SidePanel';
 
-cytoscape.use(coseBilkent)
+cytoscape.use(coseBilkent);
 
-export default function GraphView({ graph, onNodeSelect }) {
-  const ref = useRef(null)
-  const cyRef = useRef(null)
+export default function GraphView({ graphData }) {
+  const cyRef = useRef(null);
+  const [selectedNode, setSelectedNode] = useState(null);
 
   useEffect(() => {
-    if (!ref.current) return
-    if (!cyRef.current) {
-      cyRef.current = cytoscape({
-        container: ref.current,
-        elements: [],
-        style: [
-          { selector: 'node', style: { 'label': 'data(label)', 'text-valign': 'center', 'text-halign': 'center', 'width': 'mapData(degree, 0, 20, 20, 60)', 'height': 'mapData(degree, 0, 20, 20, 60)' } },
-          { selector: 'edge', style: { 'width': 2, 'curve-style': 'bezier', 'target-arrow-shape': 'triangle' } },
-          { selector: '.faded', style: { 'opacity': 0.2 } }
-        ],
-        layout: { name: 'cose-bilkent' }
-      })
+    if (!graphData?.nodes?.length) return;
 
-      cyRef.current.on('tap', 'node', (evt) => {
-        const nd = evt.target.data()
-        onNodeSelect(nd)
-      })
-    }
+    // Destroy old instance if it exists
+    if (cyRef.current) cyRef.current.destroy();
 
-    const cy = cyRef.current
-    if (graph) {
-      const elements = []
-      graph.nodes.forEach(n => {
-        elements.push({ data: { id: n.id, label: n.label, degree: n.degree || 1, depth: n.depth || 0 } })
-      })
-      graph.edges.forEach(e => elements.push({ data: { id: `${e.from}->${e.to}`, source: e.from, target: e.to } }))
+    // Filter valid edges
+    const validEdges = (graphData.edges || []).filter(e => {
+      const src = graphData.nodes.some(n => n.data.id === e.data.source);
+      const tgt = graphData.nodes.some(n => n.data.id === e.data.target);
+      return src && tgt;
+    });
 
-      cy.json({ elements })
-      const layout = cy.layout({ name: 'cose-bilkent', animate: true })
-      layout.run()
-    }
-  }, [graph, onNodeSelect])
+    cyRef.current = cytoscape({
+      container: document.getElementById('cy'),
+      elements: [...graphData.nodes, ...validEdges],
+      style: [
+        {
+          selector: 'node',
+          style: {
+            label: 'data(id)',
+            'background-color': ele =>
+              ele.data('vulnerability_count') > 0 ? '#E24A4A' : '#4B9CE2',
+            'width': ele => 40 + (ele.data('maintainer_count') || 0) * 6,
+            'height': ele => 40 + (ele.data('maintainer_count') || 0) * 6,
+            'color': '#fff',
+            'font-size': 12,
+            'text-valign': 'center',
+            'text-halign': 'center'
+          }
+        },
+        {
+          selector: 'edge',
+          style: {
+            width: 2,
+            'line-color': '#ccc',
+            'target-arrow-shape': 'triangle',
+            'target-arrow-color': '#ccc'
+          }
+        },
+        {
+          selector: 'node:selected',
+          style: {
+            'border-width': 4,
+            'border-color': '#FFD700'
+          }
+        }
+      ],
+      layout: { name: 'cose-bilkent', animate: false }
+    });
 
-  return <div ref={ref} style={{ width: '100%', height: '100%' }} />
+    // Click listener for node
+    cyRef.current.on('tap', 'node', evt => {
+      const nodeData = evt.target.data();
+      const connectedEdges = evt.target.connectedEdges().map(e => e.data());
+      const connectedNodes = evt.target.connectedNodes().map(n => n.data().id);
+      setSelectedNode({
+        ...nodeData,
+        connectedEdges,
+        connectedNodes
+      });
+    });
+
+    cyRef.current.on('tap', evt => {
+      if (evt.target === cyRef.current) setSelectedNode(null);
+    });
+
+    return () => cyRef.current.destroy();
+  }, [graphData]);
+
+  return (
+    <div style={{ display: 'flex', gap: '1rem' }}>
+      <div id="cy" style={{ flex: 1, height: '80vh', border: '1px solid #ccc' }} />
+      <SidePanel node={selectedNode} />
+    </div>
+  );
 }
