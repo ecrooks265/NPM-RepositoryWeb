@@ -1,0 +1,294 @@
+[2025-11-22 07:24:25] === NodeMedic Batch Run Started ===
+[2025-11-22 07:24:48] Processing 4715 packages
+[2025-11-22 07:24:48] 
+--- PACKAGE: 1odash ---
+[2025-11-22 07:24:48] Downloaded tarball https://registry.npmjs.org/1odash/-/1odash-1.8.3.tgz → /tmp/tmpejafhuny/pkg.tgz (6861 bytes)
+[2025-11-22 07:24:48] Extraction successful
+[2025-11-22 07:24:48] Running NodeMedic: docker run --rm -v /tmp/tmpejafhuny/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:48] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:48] NodeMedic stderr:
+
+[2025-11-22 07:24:48] NodeMedic failed with exit code 1
+[2025-11-22 07:24:48] 
+--- PACKAGE: 3d-force-graph ---
+[2025-11-22 07:24:48] Downloaded tarball https://registry.npmjs.org/3d-force-graph/-/3d-force-graph-1.79.0.tgz → /tmp/tmpa614nh5e/pkg.tgz (3217089 bytes)
+[2025-11-22 07:24:48] Extraction successful
+[2025-11-22 07:24:48] Running NodeMedic: docker run --rm -v /tmp/tmpa614nh5e/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:48] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:48] NodeMedic stderr:
+
+[2025-11-22 07:24:48] NodeMedic failed with exit code 1
+[2025-11-22 07:24:48] 
+--- PACKAGE: 4eact ---
+[2025-11-22 07:24:49] Downloaded tarball https://registry.npmjs.org/4eact/-/4eact-1.0.0.tgz → /tmp/tmpquy1mhi5/pkg.tgz (359 bytes)
+[2025-11-22 07:24:49] Extraction successful
+[2025-11-22 07:24:49] Running NodeMedic: docker run --rm -v /tmp/tmpquy1mhi5/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:49] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:49] NodeMedic stderr:
+
+[2025-11-22 07:24:49] NodeMedic failed with exit code 1
+[2025-11-22 07:24:49] 
+--- PACKAGE: 5eact ---
+[2025-11-22 07:24:49] Downloaded tarball https://registry.npmjs.org/5eact/-/5eact-1.0.0.tgz → /tmp/tmp_aiouywd/pkg.tgz (359 bytes)
+[2025-11-22 07:24:49] Extraction successful
+[2025-11-22 07:24:49] Running NodeMedic: docker run --rm -v /tmp/tmp_aiouywd/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:49] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:49] NodeMedic stderr:
+
+[2025-11-22 07:24:49] NodeMedic failed with exit code 1
+[2025-11-22 07:24:49] 
+--- PACKAGE: @acemir/cssom ---
+[2025-11-22 07:24:49] Downloaded tarball https://registry.npmjs.org/@acemir/cssom/-/cssom-0.9.23.tgz → /tmp/tmp67e2x61a/pkg.tgz (60972 bytes)
+[2025-11-22 07:24:49] Extraction successful
+[2025-11-22 07:24:49] Running NodeMedic: docker run --rm -v /tmp/tmp67e2x61a/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:49] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:49] NodeMedic stderr:
+
+[2025-11-22 07:24:49] NodeMedic failed with exit code 1
+[2025-11-22 07:24:49] 
+--- PACKAGE: @adobe/css-tools ---
+[2025-11-22 07:24:49] Downloaded tarball https://registry.npmjs.org/@adobe/css-tools/-/css-tools-4.4.4.tgz → /tmp/tmpcexvc7de/pkg.tgz (27587 bytes)
+[2025-11-22 07:24:50] Extraction successful
+[2025-11-22 07:24:50] Running NodeMedic: docker run --rm -v /tmp/tmpcexvc7de/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:50] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:50] NodeMedic stderr:
+
+[2025-11-22 07:24:50] NodeMedic failed with exit code 1
+[2025-11-22 07:24:50] 
+--- PACKAGE: @adonisjs/ace ---
+[2025-11-22 07:24:50] Downloaded tarball https://registry.npmjs.org/@adonisjs/ace/-/ace-13.4.0.tgz → /tmp/tmpl2r8q_jt/pkg.tgz (54677 bytes)
+[2025-11-22 07:24:50] Extraction successful
+[2025-11-22 07:24:50] Running NodeMedic: docker run --rm -v /tmp/tmpl2r8q_jt/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:50] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:50] NodeMedic stderr:
+
+[2025-11-22 07:24:50] NodeMedic failed with exit code 1
+[2025-11-22 07:24:50] 
+--- PACKAGE: @ai-sdk/gateway ---
+[2025-11-22 07:24:50] Downloaded tarball https://registry.npmjs.org/@ai-sdk/gateway/-/gateway-2.0.11.tgz → /tmp/tmp453pbb36/pkg.tgz (43415 bytes)
+[2025-11-22 07:24:50] Extraction successful
+[2025-11-22 07:24:50] Running NodeMedic: docker run --rm -v /tmp/tmp453pbb36/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:50] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:50] NodeMedic stderr:
+
+[2025-11-22 07:24:50] NodeMedic failed with exit code 1
+[2025-11-22 07:24:50] 
+--- PACKAGE: @ai-sdk/provider ---
+[2025-11-22 07:24:51] Downloaded tarball https://registry.npmjs.org/@ai-sdk/provider/-/provider-2.0.0.tgz → /tmp/tmptnmtjlzf/pkg.tgz (32558 bytes)
+[2025-11-22 07:24:51] Extraction successful
+[2025-11-22 07:24:51] Running NodeMedic: docker run --rm -v /tmp/tmptnmtjlzf/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:51] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:51] NodeMedic stderr:
+
+[2025-11-22 07:24:51] NodeMedic failed with exit code 1
+[2025-11-22 07:24:51] 
+--- PACKAGE: @ai-sdk/provider-utils ---
+[2025-11-22 07:24:51] Downloaded tarball https://registry.npmjs.org/@ai-sdk/provider-utils/-/provider-utils-3.0.17.tgz → /tmp/tmprd7q2lh9/pkg.tgz (138124 bytes)
+[2025-11-22 07:24:51] Extraction successful
+[2025-11-22 07:24:51] Running NodeMedic: docker run --rm -v /tmp/tmprd7q2lh9/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:51] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:51] NodeMedic stderr:
+
+[2025-11-22 07:24:51] NodeMedic failed with exit code 1
+[2025-11-22 07:24:51] 
+--- PACKAGE: @ai-sdk/react ---
+[2025-11-22 07:24:52] Downloaded tarball https://registry.npmjs.org/@ai-sdk/react/-/react-2.0.95.tgz → /tmp/tmpoedou5fs/pkg.tgz (27767 bytes)
+[2025-11-22 07:24:52] Extraction successful
+[2025-11-22 07:24:52] Running NodeMedic: docker run --rm -v /tmp/tmpoedou5fs/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:52] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:52] NodeMedic stderr:
+
+[2025-11-22 07:24:52] NodeMedic failed with exit code 1
+[2025-11-22 07:24:52] 
+--- PACKAGE: @algolia/abtesting ---
+[2025-11-22 07:24:52] Downloaded tarball https://registry.npmjs.org/@algolia/abtesting/-/abtesting-1.10.0.tgz → /tmp/tmpfkjy1rt6/pkg.tgz (51499 bytes)
+[2025-11-22 07:24:52] Extraction successful
+[2025-11-22 07:24:52] Running NodeMedic: docker run --rm -v /tmp/tmpfkjy1rt6/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:24:52] NodeMedic stdout:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+
+[2025-11-22 07:24:52] NodeMedic stderr:
+
+[2025-11-22 07:24:52] NodeMedic failed with exit code 1
+[2025-11-22 07:24:52] 
+--- PACKAGE: @algolia/autocomplete-core ---
+[2025-11-22 07:26:03] === NodeMedic Batch Run Started ===
+[2025-11-22 07:26:25] Processing 4715 packages
+[2025-11-22 07:26:25] 
+--- PACKAGE: 1odash ---
+[2025-11-22 07:26:26] Downloaded tarball https://registry.npmjs.org/1odash/-/1odash-1.8.3.tgz → /tmp/tmp2zfcfug6/pkg.tgz (6861 bytes)
+[2025-11-22 07:26:26] Extraction successful
+[2025-11-22 07:26:26] Running NodeMedic: docker run --rm -v /tmp/tmp2zfcfug6/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:26:26] NodeMedic stdout:
+
+[2025-11-22 07:26:26] NodeMedic stderr:
+NodeExploit: unrecognized option '--package-dir'
+NodeExploit: unrecognized option '--output'
+/bin/sh: 1: pipeline/run_pipeline.sh: not found
+cat: analysisArtifacts/results.json: No such file or directory
+
+[2025-11-22 07:26:26] NodeMedic failed with exit code 1
+[2025-11-22 07:26:26] 
+--- PACKAGE: 3d-force-graph ---
+[2025-11-22 07:26:27] Downloaded tarball https://registry.npmjs.org/3d-force-graph/-/3d-force-graph-1.79.0.tgz → /tmp/tmpof0a54d6/pkg.tgz (3217089 bytes)
+[2025-11-22 07:26:27] Extraction successful
+[2025-11-22 07:26:27] Running NodeMedic: docker run --rm -v /tmp/tmpof0a54d6/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:26:27] NodeMedic stdout:
+
+[2025-11-22 07:26:27] NodeMedic stderr:
+NodeExploit: unrecognized option '--package-dir'
+NodeExploit: unrecognized option '--output'
+/bin/sh: 1: pipeline/run_pipeline.sh: not found
+cat: analysisArtifacts/results.json: No such file or directory
+
+[2025-11-22 07:26:27] NodeMedic failed with exit code 1
+[2025-11-22 07:26:27] 
+--- PACKAGE: 4eact ---
+[2025-11-22 07:26:28] Downloaded tarball https://registry.npmjs.org/4eact/-/4eact-1.0.0.tgz → /tmp/tmpq5zkep38/pkg.tgz (359 bytes)
+[2025-11-22 07:26:28] Extraction successful
+[2025-11-22 07:26:28] Running NodeMedic: docker run --rm -v /tmp/tmpq5zkep38/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:26:28] NodeMedic stdout:
+
+[2025-11-22 07:26:28] NodeMedic stderr:
+NodeExploit: unrecognized option '--package-dir'
+NodeExploit: unrecognized option '--output'
+/bin/sh: 1: pipeline/run_pipeline.sh: not found
+cat: analysisArtifacts/results.json: No such file or directory
+
+[2025-11-22 07:26:28] NodeMedic failed with exit code 1
+[2025-11-22 07:26:28] 
+--- PACKAGE: 5eact ---
+[2025-11-22 07:26:28] Downloaded tarball https://registry.npmjs.org/5eact/-/5eact-1.0.0.tgz → /tmp/tmpwk2rgftq/pkg.tgz (359 bytes)
+[2025-11-22 07:26:28] Extraction successful
+[2025-11-22 07:26:28] Running NodeMedic: docker run --rm -v /tmp/tmpwk2rgftq/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:26:29] NodeMedic stdout:
+
+[2025-11-22 07:26:29] NodeMedic stderr:
+NodeExploit: unrecognized option '--package-dir'
+NodeExploit: unrecognized option '--output'
+/bin/sh: 1: pipeline/run_pipeline.sh: not found
+cat: analysisArtifacts/results.json: No such file or directory
+
+[2025-11-22 07:26:29] NodeMedic failed with exit code 1
+[2025-11-22 07:26:29] 
+--- PACKAGE: @acemir/cssom ---
+[2025-11-22 07:26:29] Downloaded tarball https://registry.npmjs.org/@acemir/cssom/-/cssom-0.9.23.tgz → /tmp/tmpah0jo3e4/pkg.tgz (60972 bytes)
+[2025-11-22 07:26:29] Extraction successful
+[2025-11-22 07:26:29] Running NodeMedic: docker run --rm -v /tmp/tmpah0jo3e4/package:/analysis nodemedic-fine:latest --package-dir /analysis --output /analysis/nodemedic.json
+[2025-11-22 07:26:30] NodeMedic stdout:
+
+[2025-11-22 07:26:30] NodeMedic stderr:
+NodeExploit: unrecognized option '--package-dir'
+NodeExploit: unrecognized option '--output'
+/bin/sh: 1: pipeline/run_pipeline.sh: not found
+cat: analysisArtifacts/results.json: No such file or directory
+
+[2025-11-22 07:26:30] NodeMedic failed with exit code 1
+[2025-11-22 07:26:30] 
+--- PACKAGE: @adobe/css-tools ---

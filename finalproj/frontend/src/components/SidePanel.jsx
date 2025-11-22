@@ -9,8 +9,6 @@ export default function SidePanel({ node, typosquats = []  }) {
     );
   }
   
-  const repo = node.github?.repo;
-
   return (
     <aside className="sidepanel">
       <h2 className="neon-text">
@@ -18,48 +16,19 @@ export default function SidePanel({ node, typosquats = []  }) {
         <small className="version-tag">v{node.version || 'N/A'}</small>
       </h2>
 
-      {repo && (
-        <section className="panel-section">
-          <h3>GitHub Repository</h3>
-          <p>
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="link-neon">
-              {repo.name}
-            </a>
-          </p>
-          <p>
-            ⭐ {repo.stars} stars • 🍴 {repo.forks} forks
-          </p>
-
-          <details>
-            <summary className="dropdown-header">Contributors ({repo.contributors?.length || 0})</summary>
-            <div className="contributors-grid">
-              {repo.contributors?.map((c, i) => (
-                <a
-                  key={i}
-                  href={c.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contributor-card"
-                  title={`${c.login} (${c.contributions} commits)`}
-                >
-                  <img src={c.avatar_url} alt={c.login} />
-                  <span>{c.login}</span>
-                </a>
-              ))}
-            </div>
-          </details>
-        </section>
-      )}
-
       {typosquats.length > 0 && (
         <section className="panel-section">
           <h3>Potential Typosquatting Packages</h3>
           <ul className="data-list">
-            {typosquats.map((n, i) => <li key={i}>{n}</li>)}
+            {typosquats.map((pkg, i) => (
+              <li key={i}>
+                <b>{pkg.name}</b> 
+                <span className="text-faint"> (score: {pkg.score})</span>
+              </li>
+            ))}
           </ul>
         </section>
       )}
-
 
       <section className="panel-section">
         <h3>Maintainers</h3>

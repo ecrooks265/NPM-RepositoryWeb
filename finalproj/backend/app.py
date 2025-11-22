@@ -3,7 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from deps_fetcher import parse_dependency_json
 from npm_client import get_package_metadata
 from osv_client import get_vulnerabilities
-from github_client import extract_github_repo_url, get_github_repo_data
+import requests
+from rapidfuzz.distance import Levenshtein
+
+
 import json
 import asyncio
 import requests
@@ -43,12 +46,8 @@ async def get_package_graph(package: str):
     vulns = await get_vulnerabilities(package, meta.get("version"))
 
     repo_url = meta.get("repository", {}).get("url")
-    github_data = await github_client.enrich_from_repo_url(repo_url) if repo_url else None
 
     node_data = {**meta, **vulns}
-    if github_data:
-        node_data["github"] = github_data
-
     node = {"data": {"id": package, **node_data}}
     return {"nodes": [node], "edges": []}
 
@@ -56,37 +55,62 @@ async def get_package_graph(package: str):
 async def enrich_node(node, name):
     meta = await get_package_metadata(name)
     vulns = await get_vulnerabilities(name, meta.get("version"))
-    github_repo_slug = await extract_github_repo_url(meta)
-    github_data = await get_github_repo_data(github_repo_slug)
     
     node["data"].update(meta)
     node["data"].update(vulns)
-    node["data"]["github"] = github_data
-
-
 
 NPM_SEARCH_URL = "https://registry.npmjs.com/-/v1/search"
 
+def is_typo_squat(original: str, candidate: str) -> bool:
+    """
+    Returns True if candidate is a realistic typosquat of original.
+    Rules:
+    - Length difference must be small (≤ 2)
+    - Levenshtein distance must be small (1–2)
+    - Candidate cannot add meaningful prefixes/suffixes
+    """
+    if candidate == original:
+        return False
+
+    # Normalize
+    o = original.lower()
+    c = candidate.lower()
+
+    # Skip names that append/prepend full words (e.g. express-ws)
+    if "-" in c or "/" in c:
+        return False
+
+    # Hard length cutoff (avoid things like express-ws)
+    if abs(len(o) - len(c)) > 1:
+        return False
+
+    # Compute edit distance
+    dist = Levenshtein.distance(o, c)
+
+    # Only true typos if 1–2 edits apart
+    return dist in (1, 2)
+
+
 @app.get("/api/typosquats/{package}")
 async def typosquats(package: str):
-    """
-    Search NPM registry for similar package names.
-    This uses the official search API to find packages that may be typosquatting.
-    """
-    params = {
-        "text": package,
-        "size": 50  # adjust number of results if needed
-    }
+    params = {"text": package, "size": 100}
+
     try:
         res = requests.get(NPM_SEARCH_URL, params=params, timeout=10)
         res.raise_for_status()
         data = res.json()
-        results = []
 
-        for pkg in data.get("objects", []):
-            name = pkg.get("package", {}).get("name")
-            if name and name != package:
-                results.append(name)
+        results = []
+        for obj in data.get("objects", []):
+            name = obj.get("package", {}).get("name")
+            if not name or name == package:
+                continue
+
+            if is_typo_squat(package, name):
+                results.append({
+                    "name": name,
+                    "levenshtein": Levenshtein.distance(package, name)
+                })
 
         return {"package": package, "similar_names": results}
 

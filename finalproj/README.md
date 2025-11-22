@@ -63,6 +63,7 @@ Runs on http://localhost:5173
 Github setup:
 first configure gh CLI with WSL or whatever distro you run the backend on (HTTPS or SSH doesn't matter as long as you're logged in)
 Then set the environment variable so python os.env can find it
+gh auth login to login to the gh CLI. Go to https://docs.github.com/en/rest/quickstart?apiVersion=2022-11-28 for more information
 export GITHUB_TOKEN=$(gh auth token)
 echo $GITHUB_TOKEN - to test it
 
